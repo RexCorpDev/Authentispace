@@ -1,0 +1,125 @@
+<!-- <div class="container well">
+  {{ clients | json : 10}}
+</div> -->
+
+<!-- TEMPLATES -->
+<div class="template-header text-center">
+  <i class="fa fa-group add-client fa-5x fa-fw margin-bottom"></i>
+  <br>
+  <h1 class="text-center">Clients</h1>
+
+  <div class="container text-center">
+    <label class="col-lg-5 text-center">
+      Search:
+      <input ng-model='searchFilter' type="text" class="form-control">
+    </label>
+    <label class="col-lg-2 text-center">
+      <button type="button" class="btn btn-success add-primary" ui-sref="addClient" ng-toggle="isCollapsed = !isCollapsed">
+        <i class="fa fa-plus-circle fa-2x fa-fw margin-bottom">
+        </i>
+        <div class="">
+          Add Client
+        </div>
+      </button>
+    </label>
+    <label class="col-lg-5 text-center">
+      Sort By:
+      <input ng-model='sortOrder' type="text" class="form-control">
+    </label>
+  </div>
+
+  <table class="table table-striped">
+    <tbody>
+      <tr >
+        <td class="col-xs-1">
+          <p ng-click='sortBy("index")'><b> # </b></p>
+        </td>
+        <td class="col-xs-1">
+          <p ng-click='sortBy("personalAddress")'><b> Name </b></p>
+        </td>
+        <td class="col-xs-1">
+          <p ng-click='sortBy("price")'><b> Phone </b> </p>
+        </td>
+        <td class="col-xs-1">
+          <p ng-click='sortBy("rating")'> <b> Email </b></p>
+        </td>
+        <td class="text-center col-xs-1">
+          <p ng-click='sortBy("offers")'><b>  Signed Up </b></p>
+        </td>
+        <td class="text-center col-xs-1">
+          <p ng-click='sortBy("status")'><b>  Status </b></p>
+        </td>
+        <td class="text-center col-xs-1">
+          <p ng-click='sortBy("status")'><b>  Tenure </b></p>
+        </td>
+        <td class="text-center col-xs-1">
+          <p ng-click='sortBy("status")'><b>  personalAddress </b></p>
+        </td>
+        <td class="text-center col-xs-2">
+          <p ng-click='sortBy("edit-delete")'><b> <i class="fa fa-edit fa-fw margin-bottom"></i>  | <i class="fa fa-trash-o fa-fw margin-bottom"></i> </b></p>
+        </td>
+      </tr>
+      <tr ng-repeat='client in clients | filter:searchFilter | orderBy:sortOrder track by $index'>
+        <td class="col-xs-1">
+          <p> {{ $index + 1}} </p>
+        </td>
+        <td class="col-xs-2">
+          <p>  {{ client.name.last }}, {{ client.name.first }} </p>
+        </td>
+        <td class="col-xs-2">
+          <p>  <b>M: </b>{{ client.phone.mobile }}<br><b>H: </b>{{ client.phone.home }}<br><b>W: </b>{{ client.phone.work }}</p>
+        </td>
+        <td class="col-xs-1">
+          <p>  {{ client.email}}</p>
+        </td>
+        <td class="col-xs-1">
+          <p>  {{ client.signup}}</p>
+        </td>
+        <td class="col-xs-1">
+          <p>  {{ client.status}}</p>
+        </td>
+        <td class="col-xs-1">
+          <p>  {{ client.tenure}}</p>
+        </td>
+        <td class="col-xs-1">
+          <p>  {{ client.personalAddress.region }} <br>
+            {{ client.personalAddress.country }}, {{ client.personalAddress.city }} <br>
+           {{ client.personalAddress.street }}  {{ client.personalAddress.state }} <br>
+          {{ client.personalAddress.zip }}   </p>
+        </td>
+        <td class="text-center col-xs-2">
+          <button type="button" class="btn btn-primary" ng-click="editedClient(client)" ng-toggle="isCollapsed = !isCollapsed">   <i class="fa fa-edit fa-fw margin-bottom"></i> </button> &nbsp  <button type="button" class="btn btn-danger" ng-click="deleteClient(client._id)">   <i class="fa fa-trash-o fa-fw margin-bottom"></i> </button>
+        </td>
+      </tr>
+      <tr>
+        <hr>
+        <!-- <div uib-collapse="isCollapsed" class="text-center">
+        <div >
+        <div class="col-xs-2">
+        <input type="text" class="form-control" ng-model="editCategory">
+      </div>
+      <div class="col-xs-6">
+      <input type="text" style="font-size: 12px" class="form-control"  ng-model="editQuestion">
+    </div>
+    <div class="col-xs-2">
+    <input type="text" class="form-control"  ng-model="editAnswer">
+  </div>
+  <div class="col-xs-2">
+  <input type="text" class="form-control"  ng-model="editDifficulty">
+</div>
+</div>
+<br>
+<br>
+<div>
+<button type="button" class="btn btn-success" ng-click="isCollapsed = !isCollapsed; submitEdit()">Submit Changes</button>
+&nbsp <button type="button" class="btn btn-danger" ng-click="isCollapsed = !isCollapsed; cancelChanges()">Cancel Changes</button>
+</div>
+</div> -->
+</tr>
+</tr>
+</tbody>
+<tfoot>
+  <hr>
+</tfoot>
+</table>
+</div>
