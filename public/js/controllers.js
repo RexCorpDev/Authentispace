@@ -72,8 +72,9 @@ app.controller('signUpCtrl', function($scope, $state, User){
 
     User.create(newUser)
     .then(cb => {
+      console.log(cb);
       newUser = {};
-      $state.go('home');
+      $state.go('login');
     });
   };
 });
