@@ -5,12 +5,12 @@ var path = require('path');
 var router = express.Router();
 
 router.get('/', (req, res) => {
-  console.log('cookies=>\n', req.cookies);
-
-  // var indexPath = path.join(__dirname, '../views/index.html');
-  // res.cookie("Toby's cookies", 'chocolateChip');
+  var indexPath = path.join(__dirname, '../views/index.html');
   res.sendFile(indexPath);
 })
+
+module.exports = router;
+
 
 // function authMiddleWare(req, res, next) {
 //   var token = req.cookies.accessToken;
@@ -22,9 +22,5 @@ router.get('/', (req, res) => {
 //     res.status(401).send('Not Authorized!');
 //   }
 // };
-
-
 // router.get('/secret', authMiddleWare, function(req, res){
 // });
-
-module.exports = router;

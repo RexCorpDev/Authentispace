@@ -9,8 +9,12 @@ console.log('SECRET\n', JWT_SECRET);
 
 
 var userSchema = new mongoose.Schema({
+  name            :   { first: String, last: String},
   username        :   { type: String, required: true, unique: true},
-  password        :   { type: String, required: true}
+  password        :   { type: String, required: true},
+  image           :   { type: String, required: false},
+  about           :   { type: String},
+  posts           :   [{ date: Date, post: String}]
 });
 
 userSchema.statics.isLoggedIn = function(req, res, next){
@@ -39,6 +43,7 @@ userSchema.statics.isLoggedIn = function(req, res, next){
 
 userSchema.statics.register = function( userObj, cb ) {
   // create new user
+  console.log(userObj);
   this.create(userObj, cb);
 };
 
@@ -51,8 +56,8 @@ userSchema.statics.login = function( userObj, cb ){
     }
 
     var token = dbUser.createToken(userObj);
-
-    cb(null, token);
+    dbUser.password = null;
+    cb(null, {token:token, dbUser:dbUser});
   });
 }
 

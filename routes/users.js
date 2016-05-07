@@ -6,6 +6,7 @@ var User = require('../models/user');
 
 console.log('@users.js => ', JSON.stringify(User, 2, null));
 
+/////// - AUTHENTICATION
 router.route('/')
 .get((req, res) => {
   User
@@ -14,21 +15,24 @@ router.route('/')
   });
 });
 
-router.route('/register')
+router.route('/sign-up')
 .post((req, res) => {
+  console.log('req.body=> \n', req.body);
   User
   .register(req.body, err => {
     console.log(err);
-    console.log('req.body=> \n', req.body);
-    res.cookie('COOKIE', 'chocolateChip');
+    res.cookie('COOKIE', `${req.body.username}`);
     res.status(err ? 400: 200).send(err || 'registered!');
   });
 });
 
 router.post('/login', (req, res) => {
-  User.login(req.body, (err, token) => {
+
+  console.log('backend Info', req.body);
+
+  User.login(req.body, (err, data) => {
       if(err) return res.status(400).send(err);
-      res.cookie('accessToken', token).send(token);
+      res.cookie('accessToken', data.token).send(data.dbUser);
     });
 });
 
@@ -42,16 +46,19 @@ router.get('/profile', User.isLoggedIn, (req, res) => {
 });
 
 
+/////// - CRUD
 
-module.exports = router;
-
-// router.route('/:id')
+// router.route('profile/:id')
 // .get((req, res) => {
 //   User
 //   .findById(req.params.id)
 //   .populate('property')
 //   .exec(res.handle)
 // })
+
+module.exports = router;
+
+
 // .delete((req, res) => {
 //   User
 //   .findByIdAndRemove(req.params.id)
@@ -70,7 +77,6 @@ module.exports = router;
 // router.put('/:client/sell/:property', (req, res) => {
 //   User.moveOut(req.params.client, req.params.property, res.handle);
 // });
-
 
 
 // router.get('/:id', (req, res) => {

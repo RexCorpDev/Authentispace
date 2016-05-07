@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('timeShareApp', [ 'ui.bootstrap', 'ui.router', 'oitozero.ngSweetAlert' ]);
+var app = angular.module('authentiSpace', [ 'ui.bootstrap', 'ui.router', 'oitozero.ngSweetAlert' ]);
 
 app.config(function($stateProvider, $urlRouterProvider){
 
@@ -8,13 +8,33 @@ app.config(function($stateProvider, $urlRouterProvider){
   .state('home', {
     url           : '/' ,
     templateUrl   : 'html/home.html' ,
-    controller    : 'homeCtrl'
-  })
-  .state('login', {
-    url           : '/login' ,
-    templateUrl   : 'html/login.html' ,
     controller    : 'loginCtrl'
   })
+  .state('profile', {
+    url           : '/profile/:user' ,
+    templateUrl   : 'html/profile.html' ,
+    controller    : 'profileCtrl',
+    params        : { userInfo : null }
+  })
+  .state('signUp', {
+    url           : '/sign-up',
+    templateUrl   : 'html/signUp.html',
+    controller    : 'signUpCtrl'
+  });
+  // .state('profile'){
+  //   url           : '/profile',
+  //   templateUrl   : 'html/profile',
+  //   controller    : 'profileCtrl'
+  // }
+  // .state('logout'){
+  //   url           : '/logout',
+  //   templateUrl   : 'html/logout',
+  //   controller    : 'logoutCtrl'
+  // }
+
+  $urlRouterProvider.otherwise('/');
+});
+
   // .state('addProperty', {
   //   url           : '/addProperty' ,
   //   templateUrl   : 'html/addProperty.html' ,
@@ -51,6 +71,3 @@ app.config(function($stateProvider, $urlRouterProvider){
 
 
   ; // END OF .state(s)
-
-  $urlRouterProvider.otherwise('/');
-});
