@@ -1,6 +1,6 @@
 'use strict';
-require('dotenv').config();
 
+require('dotenv').config();
 const PORT = process.env.PORT || 4000;
 
 var express = require('express');
@@ -12,7 +12,7 @@ var cookieParser = require('cookie-parser');
 
 var mongoose = require('mongoose');
 
-const MONGOURL = process.env.MONGODB_URL || 'mongodb://localhost/Authentication';
+const MONGOURL = process.env.MONGODB_URI || 'mongodb://localhost/Authentication';
 
 var app = express();
 

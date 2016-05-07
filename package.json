@@ -11,9 +11,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "engines": {
-    "node": "5.10.1"
-  },
   "dependencies": {
     "body-parser": "^1.15.0",
     "bower": "^1.7.9",
@@ -25,5 +22,8 @@
     "mongoose": "^4.4.14",
     "morgan": "^1.7.0",
     "uuid": "^2.0.2"
-  }
+  },
+  "engines": {
+    "node": "5.10.1"
+  },
 }
